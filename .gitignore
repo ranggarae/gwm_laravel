@@ -1,0 +1,28 @@
+# Laravel
+laravel_app/.env
+laravel_app/vendor/
+laravel_app/node_modules/
+laravel_app/public/storage
+laravel_app/public/hot
+laravel_app/storage/*.key
+laravel_app/storage/framework/cache/
+laravel_app/storage/framework/sessions/
+laravel_app/storage/framework/testing/
+laravel_app/storage/framework/views/
+laravel_app/storage/logs/
+laravel_app/bootstrap/cache/
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Uploads / Public
+public_html/assets/uploads/
+
+# OS / IDE / Zip files
+.DS_Store
+.idea/
+.vscode/
+*.zip
+patch*.zip
+full_project_patch.zip

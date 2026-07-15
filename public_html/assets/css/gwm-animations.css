@@ -1,0 +1,200 @@
+/* 
+ * GWM Premium Scroll Animations
+ * Custom Intersection Observer-driven animations — replaces generic AOS fade-up
+ * ponytail: pure CSS keyframes + tiny JS observer, zero dependencies
+ */
+
+/* ========================================
+   BASE: Hidden state for all animated elements
+   ======================================== */
+[data-gwm-anim] {
+    opacity: 0;
+    will-change: transform, opacity, clip-path, filter;
+}
+[data-gwm-anim].gwm-visible {
+    animation-fill-mode: both;
+}
+
+/* ========================================
+   1. CLIP REVEAL — text/sections wipe in from a geometric mask
+   ======================================== */
+@keyframes gwmClipRevealUp {
+    0%   { clip-path: inset(100% 0 0 0); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0);    opacity: 1; }
+}
+@keyframes gwmClipRevealLeft {
+    0%   { clip-path: inset(0 100% 0 0); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0);    opacity: 1; }
+}
+@keyframes gwmClipRevealRight {
+    0%   { clip-path: inset(0 0 0 100%); opacity: 0; }
+    100% { clip-path: inset(0 0 0 0);    opacity: 1; }
+}
+[data-gwm-anim="clip-up"].gwm-visible {
+    animation: gwmClipRevealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+[data-gwm-anim="clip-left"].gwm-visible {
+    animation: gwmClipRevealLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+[data-gwm-anim="clip-right"].gwm-visible {
+    animation: gwmClipRevealRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   2. BLUR-IN — elements emerge from a soft gaussian blur
+   ======================================== */
+@keyframes gwmBlurIn {
+    0%   { opacity: 0; filter: blur(12px); transform: translateY(20px); }
+    100% { opacity: 1; filter: blur(0);    transform: translateY(0); }
+}
+[data-gwm-anim="blur-in"].gwm-visible {
+    animation: gwmBlurIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   3. RISE-ROTATE — subtle 3D tilt entrance
+   ======================================== */
+@keyframes gwmRiseRotate {
+    0%   { opacity: 0; transform: translateY(60px) rotateX(8deg) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0)    rotateX(0deg) scale(1); }
+}
+[data-gwm-anim="rise-rotate"].gwm-visible {
+    animation: gwmRiseRotate 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform-origin: bottom center;
+}
+
+/* ========================================
+   4. SCALE-SPRING — elastic overshoot scale entrance
+   ======================================== */
+@keyframes gwmScaleSpring {
+    0%   { opacity: 0; transform: scale(0.7); }
+    60%  { opacity: 1; transform: scale(1.04); }
+    100% { opacity: 1; transform: scale(1); }
+}
+[data-gwm-anim="scale-spring"].gwm-visible {
+    animation: gwmScaleSpring 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ========================================
+   5. SLIDE-MASK — slide in with a colored line sweep
+   ======================================== */
+@keyframes gwmSlideMask {
+    0%   { opacity: 0; transform: translateX(-40px); clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+    50%  { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    100% { opacity: 1; transform: translateX(0);     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+[data-gwm-anim="slide-mask"].gwm-visible {
+    animation: gwmSlideMask 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   6. DRIFT-UP — gentle float with subtle bounce
+   ======================================== */
+@keyframes gwmDriftUp {
+    0%   { opacity: 0; transform: translateY(50px); }
+    70%  { opacity: 1; transform: translateY(-4px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+[data-gwm-anim="drift-up"].gwm-visible {
+    animation: gwmDriftUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   7. FADE-SCALE — simple but premium fade + slight scale
+   ======================================== */
+@keyframes gwmFadeScale {
+    0%   { opacity: 0; transform: scale(0.92) translateY(15px); }
+    100% { opacity: 1; transform: scale(1)    translateY(0); }
+}
+[data-gwm-anim="fade-scale"].gwm-visible {
+    animation: gwmFadeScale 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   8. COUNTER ROLL — for counter section numbers
+   ======================================== */
+@keyframes gwmCounterRoll {
+    0%   { opacity: 0; transform: translateY(30px) rotateZ(-3deg); }
+    100% { opacity: 1; transform: translateY(0)    rotateZ(0deg); }
+}
+[data-gwm-anim="counter-roll"].gwm-visible {
+    animation: gwmCounterRoll 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   STAGGER DELAYS — cascading child animations
+   ======================================== */
+[data-gwm-delay="100"].gwm-visible { animation-delay: 100ms; }
+[data-gwm-delay="200"].gwm-visible { animation-delay: 200ms; }
+[data-gwm-delay="300"].gwm-visible { animation-delay: 300ms; }
+[data-gwm-delay="400"].gwm-visible { animation-delay: 400ms; }
+[data-gwm-delay="500"].gwm-visible { animation-delay: 500ms; }
+[data-gwm-delay="600"].gwm-visible { animation-delay: 600ms; }
+[data-gwm-delay="700"].gwm-visible { animation-delay: 700ms; }
+
+/* ========================================
+   SECTION HEADING — line-draw underline effect
+   ======================================== */
+@keyframes gwmLineGrow {
+    0%   { width: 0; }
+    100% { width: 60px; }
+}
+.gwm-section-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+}
+.gwm-section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, #0056B3, #1C2A4A);
+    border-radius: 2px;
+}
+[data-gwm-anim].gwm-visible .gwm-section-heading::after,
+.gwm-visible.gwm-section-heading::after {
+    animation: gwmLineGrow 0.6s 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========================================
+   HOVER ENHANCEMENTS — premium micro-interactions
+   ======================================== */
+
+/* Card hover with tilt shadow */
+.gwm-glass-card,
+.gwm-portfolio-card,
+.card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+/* Smooth underline sweep for links inside cards */
+.gwm-portfolio-card .content-box h4 a,
+.card .card-title a {
+    position: relative;
+    background-image: linear-gradient(#0056B3, #0056B3);
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s ease;
+}
+.gwm-portfolio-card:hover .content-box h4 a,
+.card:hover .card-title a {
+    background-size: 100% 2px;
+}
+
+/* ========================================
+   REDUCED MOTION — respect user preference
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    [data-gwm-anim] {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+    }
+}

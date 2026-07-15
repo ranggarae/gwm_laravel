@@ -1,0 +1,392 @@
+/* 
+ * GWM Design System
+ * Based on PT Gita Wahana Mandiri Brand Identity
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+:root {
+    /* Primary Colors — From GWM Logo */
+    --color-navy: #1a2744;
+    /* Dark navy — backgrounds, headers */
+    --color-navy-light: #243352;
+    /* Slightly lighter navy */
+    --color-blue: #2b7de9;
+    /* Royal blue — CTAs, accents, links */
+    --color-blue-light: #4a94f0;
+    /* Hover state blue */
+    --color-blue-dark: #1e5bb5;
+    /* Active state blue */
+    --color-gold: #c5a866;
+    /* Gold/Accent color */
+
+    /* Neutral Colors */
+    --color-silver: #e8ecf1;
+    /* Light backgrounds */
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    /* Borders */
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    /* Body text secondary */
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    /* Body text primary */
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+    /* Headings */
+
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    /* 4px */
+    --space-sm: 0.5rem;
+    /* 8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+    --space-2xl: 3rem;
+    /* 48px */
+    --space-3xl: 4rem;
+    /* 64px */
+    --space-4xl: 6rem;
+    /* 96px */
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    /* 6px */
+    --radius-md: 0.5rem;
+    /* 8px */
+    --radius-lg: 0.75rem;
+    /* 12px */
+    --radius-xl: 1rem;
+    /* 16px */
+    --radius-2xl: 1.5rem;
+    /* 24px */
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(26, 39, 68, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(26, 39, 68, 0.07), 0 2px 4px -1px rgba(26, 39, 68, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(26, 39, 68, 0.1), 0 4px 6px -2px rgba(26, 39, 68, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(26, 39, 68, 0.12), 0 10px 10px -5px rgba(26, 39, 68, 0.04);
+    --shadow-glow: 0 0 15px rgba(43, 125, 233, 0.3);
+
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+    --transition-slow: 500ms ease-in-out;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-body);
+    color: var(--color-gray-700);
+    background-color: var(--color-gray-50);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--color-gray-900);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+a {
+    color: var(--color-blue);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-blue-dark);
+    text-decoration: none;
+}
+
+/* Utilities */
+.gwm-text-primary {
+    color: var(--color-navy);
+}
+
+.gwm-text-secondary {
+    color: var(--color-blue);
+}
+
+.gwm-text-gray {
+    color: var(--color-gray-500);
+}
+
+.gwm-bg-primary {
+    background-color: var(--color-navy);
+}
+
+.gwm-bg-secondary {
+    background-color: var(--color-blue);
+}
+
+.gwm-bg-light {
+    background-color: var(--color-gray-50);
+}
+
+.gwm-bg-silver {
+    background-color: var(--color-silver);
+}
+
+/* Buttons */
+.gwm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+.gwm-btn-primary {
+    background-color: var(--color-blue);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.gwm-btn-primary:hover {
+    background-color: var(--color-blue-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gwm-btn-navy {
+    background-color: var(--color-navy);
+    color: white;
+}
+
+.gwm-btn-navy:hover {
+    background-color: var(--color-navy-light);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gwm-btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-blue);
+    color: var(--color-blue);
+}
+
+.gwm-btn-outline:hover {
+    background-color: var(--color-blue);
+    color: white;
+}
+
+/* Sections */
+.gwm-section {
+    padding: var(--space-4xl) 0;
+}
+
+.gwm-section-title {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.gwm-section-subtitle {
+    color: var(--color-blue);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+    display: block;
+}
+
+.gwm-section-heading {
+    font-size: 2.5rem;
+    color: var(--color-navy);
+}
+
+/* Glassmorphism */
+.gwm-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-lg);
+}
+
+.gwm-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    background-color: rgba(43, 125, 233, 0.1);
+    color: var(--color-blue);
+}
+
+/* =========================================================================
+   PHASE 4: LEGACY INNER PAGES OVERRIDES
+   ========================================================================= */
+
+/* Overriding old section backgrounds to use GWM colors */
+.section-bg-1 {
+    background-color: var(--color-light) !important;
+}
+
+/* Modernizing Cards & Items */
+.single-work-item-02,
+.single-blog-grid-01,
+.single-testimonial-item,
+.icon-box-three {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.single-work-item-02:hover,
+.single-blog-grid-01:hover,
+.icon-box-three:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+/* Icon Box overrides */
+.icon-box-three .icon {
+    color: var(--color-blue);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.icon-box-three .content .title {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* Blog & Works */
+.single-blog-grid-01 .content,
+.single-work-item-02 .content {
+    padding: var(--space-lg);
+}
+
+.single-blog-grid-01 .content .title,
+.single-work-item-02 .content .title {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+/* Buttons modernization (overriding old boxed-btn) */
+.boxed-btn.btn-rounded {
+    border-radius: var(--radius-full);
+    padding: 0.75rem 2rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.boxed-btn.btn-rounded.white {
+    background-color: #fff;
+    color: var(--color-navy);
+}
+
+.boxed-btn.btn-rounded.white:hover {
+    background-color: var(--color-navy);
+    color: #fff;
+}
+
+/* Typography Overrides for legacy pages */
+.aboutus-content-block .title,
+.section-title .title {
+    font-family: var(--font-heading) !important;
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* Breadcrumb reset for old styles */
+.gwm-inner-page-content .breadcrumb-area {
+    display: none !important;
+    /* Hide any lingering old breadcrumbs just in case */
+}
+
+/* =========================================================================
+   GLOBAL FIXED NAVBAR (#bfd1ff) & BODY SPACING
+   ========================================================================= */
+body.gwm-body {
+    padding-top: 80px !important;
+}
+
+body.gwm-body .gwm-navbar {
+    background-color: #cfd7e9 !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    padding: 15px 0 !important;
+    z-index: 1050 !important;
+    transition: background-color var(--transition-normal), padding var(--transition-normal);
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li a {
+    color: #1C2A4A !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li:hover>a,
+body.gwm-body .gwm-navbar .navbar-nav li.current-menu-item>a {
+    color: #0056B3 !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li.menu-item-has-children:after {
+    border-top-color: #1C2A4A !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-toggler {
+    color: #1C2A4A !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li .sub-menu {
+    background-color: #bfd1ff !important;
+    border-top: 3px solid #0056B3 !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li .sub-menu li a {
+    color: #1C2A4A !important;
+}
+
+body.gwm-body .gwm-navbar .navbar-nav li .sub-menu li:hover>a {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #0056B3 !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 991px) {
+    body.gwm-body .gwm-navbar .navbar-collapse {
+        background-color: #bfd1ff !important;
+    }
+}
