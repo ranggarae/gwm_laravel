@@ -1897,5 +1897,15 @@
     "{evname} will be replaced by event name": "{evname} will be replaced by event name",
     "{evname} will be replaced by package name": "{evname} will be replaced by package name",
     "{pkname} will be replaced by package name": "{pkname} will be replaced by package name",
-    "{site} will be replaced by site title": "{site} will be replaced by site title"
+    "{site} will be replaced by site title": "{site} will be replaced by site title",
+    "My Cards": "My Cards",
+    "Add New Card": "Add New Card",
+    "Pay with Saved BRI Card": "Pay with Saved BRI Card",
+    "Card Number": "Card Number",
+    "Delete": "Delete",
+    "Card Type": "Card Type",
+    "Action": "Action",
+    "No Saved Cards Found": "No Saved Cards Found",
+    "Close": "Close",
+    "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.": "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase."
 }

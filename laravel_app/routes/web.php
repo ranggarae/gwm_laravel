@@ -301,6 +301,7 @@ Route::prefix('user-home')->middleware(['userEmailVerify','setlang','globalVaria
 
     Route::post('/profile-update','UserDashboardController@user_profile_update')->name('user.profile.update');
     Route::post('/password-change','UserDashboardController@user_password_change')->name('user.password.change');
+    Route::post('/bri-register-card', 'BriDirectDebitController@startRegistration')->name('user.bri.register.card');
 });
 
 //user dashboard
@@ -309,6 +310,7 @@ Route::prefix('user-home')->middleware(['userEmailVerify','setlang','globalVaria
     Route::get('/download/file/{id}', 'UserDashboardController@download_file')->name('user.dashboard.download.file');
     Route::post('/profile-update','UserDashboardController@user_profile_update')->name('user.profile.update');
     Route::post('/password-change','UserDashboardController@user_password_change')->name('user.password.change');
+    Route::post('/bri-register-card', 'BriDirectDebitController@startRegistration')->name('user.bri.register.card');
 });
 
 //frontend user manage

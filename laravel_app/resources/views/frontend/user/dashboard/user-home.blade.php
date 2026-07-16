@@ -60,7 +60,10 @@
                                 <a class="nav-link" id="edit-profile-tab" data-toggle="pill" href="#edit-profile" role="tab"  aria-selected="false">{{__('Edit Profile')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-edit-password-tab" data-toggle="pill" href="#edit-password" role="tab"aria-selected="false">{{__('Change Password')}}</a>
+                                <a class="nav-link" id="pills-edit-password-tab" data-toggle="pill" href="#edit-password" role="tab" aria-selected="false">{{__('Change Password')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="v-pills-cards-tab" data-toggle="pill" href="#v-pills-cards" role="tab" aria-controls="v-pills-cards" aria-selected="false">{{__('My Cards')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"  href="{{ route('user.logout') }}"
@@ -904,12 +907,67 @@
                                     </form>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="v-pills-cards" role="tabpanel" aria-labelledby="v-pills-cards-tab">
+                                <div class="dashboard-form-wrapper">
+                                    <h2 class="title">{{__('My Cards')}}</h2>
+                                    <div class="btn-wrapper mb-4">
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#addCardModal">{{__('Add New Card')}}</button>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>{{__('Card Type')}}</th>
+                                                <th>{{__('Card Number')}}</th>
+                                                <th>{{__('Action')}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php $saved_cards = \App\UserSavedCard::where('user_id', Auth::id())->get(); @endphp
+                                            @forelse($saved_cards as $card)
+                                            <tr>
+                                                <td>{{ $card->card_type }}</td>
+                                                <td>{{ $card->masked_card }}</td>
+                                                <td><button class="btn btn-danger btn-sm">{{__('Delete')}}</button></td>
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="3" class="text-center">{{__('No Saved Cards Found')}}</td>
+                                            </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Add Card Modal -->
+    <div class="modal fade" id="addCardModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{__('Add New Card')}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('user.bri.register.card') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <p>{{__('This feature is currently under integration with BRI SNAP API. Click the button below to initiate the secure Card Binding process on the BRI server.')}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Proceed to BRI')}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>

@@ -2313,10 +2313,10 @@ function render_payment_gateway_for_form($cash_on_delivery = false)
 
     $output .= '<input type="hidden" name="selected_payment_gateway" value="' . get_static_option('site_default_payment_gateway') . '">';
     $all_gateway = [
-        'paypal', 'manual_payment', 'midtrans', 'xendit'
+        'paypal', 'manual_payment', 'midtrans', 'xendit', 'bri_direct_debit'
     ];
     $output .= '<ul>';
-    if ($cash_on_delivery) {
+    if ($cash_on_delivery && !empty(get_static_option('cash_on_delivery_gateway'))) {
         $output .= '<li data-gateway="cash_on_delivery" ><div class="img-select">';
         $output .= render_image_markup_by_attachment_id(get_static_option('cash_on_delivery_preview_logo'));
         $output .= '</div></li>';

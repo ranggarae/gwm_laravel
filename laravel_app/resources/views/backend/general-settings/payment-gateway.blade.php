@@ -293,6 +293,87 @@
                                                 </div>
                                             </div>
                                             <div class="card">
+                                                <div class="card-header" id="bri_settings">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link" type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#bri_settings_content"
+                                                                aria-expanded="false">
+                                                            <span class="page-title"> {{__('BRI SNAP Settings')}}</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="bri_settings_content" class="collapse"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="payment-notice alert alert-warning">
+                                                                <p>{{__("Available Currency For BRI SNAP is IDR")}}</p>
+                                                            </div>
+                                                            <label for="bri_gateway"><strong>{{__('Enable BRI SNAP')}}</strong></label>
+                                                            <label class="switch">
+                                                                <input type="checkbox" name="bri_gateway"
+                                                                       @if(!empty(get_static_option('bri_gateway'))) checked
+                                                                       @endif id="bri_gateway">
+                                                                <span class="slider onff"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="site_logo"><strong>{{__('BRI Logo')}}</strong></label>
+                                                            <div class="media-upload-btn-wrapper">
+                                                                <div class="img-wrap">
+                                                                    @php
+                                                                        $bri_img = get_attachment_image_by_id(get_static_option('bri_preview_logo'),null,true);
+                                                                        $bri_image_btn_label = 'Upload Image';
+                                                                    @endphp
+                                                                    @if (!empty($bri_img))
+                                                                        <div class="attachment-preview">
+                                                                            <div class="thumbnail">
+                                                                                <div class="centered">
+                                                                                    <img class="avatar user-thumb"
+                                                                                         src="{{$bri_img['img_url']}}"
+                                                                                         alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @php  $bri_image_btn_label = 'Change Image'; @endphp
+                                                                    @endif
+                                                                </div>
+                                                                <input type="hidden" id="bri_preview_logo"
+                                                                       name="bri_preview_logo"
+                                                                       value="{{get_static_option('bri_preview_logo')}}">
+                                                                <button type="button" class="btn btn-info media_upload_form_btn"
+                                                                        data-btntitle="Select BRI Image"
+                                                                        data-modaltitle="Upload BRI Image"
+                                                                        data-toggle="modal"
+                                                                        data-target="#media_upload_modal">
+                                                                    {{__($bri_image_btn_label)}}
+                                                                </button>
+                                                            </div>
+                                                            <small class="form-text text-muted">{{__('allowed image format: jpg,jpeg,png. Recommended image size 160x50')}}</small>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="bri_client_id">{{__('BRI Client ID')}}</label>
+                                                            <input type="text" name="bri_client_id"
+                                                                   id="bri_client_id" class="form-control"
+                                                                   value="{{get_static_option('bri_client_id')}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="bri_client_secret">{{__('BRI Client Secret')}}</label>
+                                                            <input type="text" name="bri_client_secret"
+                                                                   id="bri_client_secret" class="form-control"
+                                                                   value="{{get_static_option('bri_client_secret')}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="bri_env">{{__('BRI Environment (production/sandbox)')}}</label>
+                                                            <input type="text" name="bri_env"
+                                                                   id="bri_env" class="form-control"
+                                                                   value="{{get_static_option('bri_env')}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
                                                 <div class="card-header" id="xendit_settings">
                                                     <h5 class="mb-0">
                                                         <button class="btn btn-link" type="button"
