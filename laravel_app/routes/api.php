@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/bri-webhook', 'BriWebhookController@handleCardRegistrationCallback');
+Route::post('/tripay/webhook', 'TripayController@webhook');

@@ -283,6 +283,21 @@ class ProductOrderController extends Controller
                 return redirect($redirect_url);
             }
             return redirect()->back()->with(['msg' => __('Midtrans Error. Please contact support.'), 'type' => 'danger']);
+        }elseif ($request->selected_payment_gateway == 'tripay'){
+            $payable_amount = $order_details->total;
+            if (get_static_option('site_global_currency') !== 'IDR') {
+                $payable_amount = get_amount_in_usd($payable_amount, get_static_option('site_global_currency')) * 15000;
+            }
+            $title = 'Payment For Product Order Id: #'.$order_details->id;
+            return TripayController::getRedirectUrl(
+                'product',
+                $order_details->payment_track,
+                $payable_amount,
+                $order_details->billing_name,
+                $order_details->billing_email,
+                $order_details->billing_phone,
+                $title
+            );
         }elseif ($request->selected_payment_gateway == 'xendit'){
             $payable_amount = $order_details->total;
             if (get_static_option('site_global_currency') !== 'IDR') {

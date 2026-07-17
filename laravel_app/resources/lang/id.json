@@ -1919,10 +1919,18 @@
     "Add New Card": "Tambah Kartu Baru",
     "Pay with Saved BRI Card": "Bayar dengan Kartu BRI Tersimpan",
     "Card Number": "Nomor Kartu",
-    "Delete": "Hapus",
     "Card Type": "Tipe Kartu",
-    "Action": "Aksi",
     "No Saved Cards Found": "Kartu Tersimpan Tidak Ditemukan",
-    "Close": "Tutup",
-    "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.": "Fitur pendaftaran kartu mandiri saat ini sedang dalam tahap integrasi dengan server API BRI. Silakan hubungi Customer Support kami untuk bantuan pendaftaran kartu manual."
+    "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.": "Fitur pendaftaran kartu mandiri saat ini sedang dalam tahap integrasi dengan server API BRI. Silakan hubungi Customer Support kami untuk bantuan pendaftaran kartu manual.",
+    "Tripay Settings": "Tripay Settings",
+    "Enable Tripay": "Enable Tripay",
+    "Tripay Logo": "Tripay Logo",
+    "Tripay API Key": "Tripay API Key",
+    "Tripay Private Key": "Tripay Private Key",
+    "Tripay Merchant Code": "Tripay Merchant Code",
+    "Tripay Environment (production\/sandbox)": "Tripay Environment (production\/sandbox)",
+    "Available Currency For Tripay is IDR": "Available Currency For Tripay is IDR",
+    "Select Payment Method": "Select Payment Method",
+    "Proceed to Payment": "Proceed to Payment",
+    "No payment channels available at the moment. Please contact support.": "No payment channels available at the moment. Please contact support."
 }

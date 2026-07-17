@@ -238,6 +238,23 @@ class EventPaymentLogsController extends Controller
                 return redirect($redirect_url);
             }
             return redirect()->back()->with(['msg' => __('Midtrans Error. Please contact support.'), 'type' => 'danger']);
+        }elseif ($request->payment_gateway == 'tripay'){
+            $attendance_details = EventAttendance::where( 'id', $request->attendance_id )->first();
+            $event_payment_details = EventPaymentLogs::where('attendance_id',$attendance_details->id)->first();
+            $payable_amount = $attendance_details->event_cost * $attendance_details->quantity;
+            if (get_static_option('site_global_currency') !== 'IDR') {
+                $payable_amount = get_amount_in_usd($payable_amount, get_static_option('site_global_currency')) * 15000;
+            }
+            $title = 'Event Payment: '.$attendance_details->event_name;
+            return TripayController::getRedirectUrl(
+                'event',
+                $event_payment_details->track,
+                $payable_amount,
+                $attendance_details->name,
+                $attendance_details->email,
+                $attendance_details->phone,
+                $title
+            );
         }elseif ($request->payment_gateway == 'xendit'){
             $attendance_details = EventAttendance::where( 'id', $request->attendance_id )->first();
             $event_payment_details = EventPaymentLogs::where('attendance_id',$attendance_details->id)->first();

@@ -1902,10 +1902,18 @@
     "Add New Card": "Add New Card",
     "Pay with Saved BRI Card": "Pay with Saved BRI Card",
     "Card Number": "Card Number",
-    "Delete": "Delete",
     "Card Type": "Card Type",
-    "Action": "Action",
     "No Saved Cards Found": "No Saved Cards Found",
-    "Close": "Close",
-    "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.": "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase."
+    "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.": "This feature is currently under integration with BRI SNAP API. Please contact support for manual registration during this sandbox phase.",
+    "Tripay Settings": "Tripay Settings",
+    "Enable Tripay": "Enable Tripay",
+    "Tripay Logo": "Tripay Logo",
+    "Tripay API Key": "Tripay API Key",
+    "Tripay Private Key": "Tripay Private Key",
+    "Tripay Merchant Code": "Tripay Merchant Code",
+    "Tripay Environment (production\/sandbox)": "Tripay Environment (production\/sandbox)",
+    "Available Currency For Tripay is IDR": "Available Currency For Tripay is IDR",
+    "Select Payment Method": "Select Payment Method",
+    "Proceed to Payment": "Proceed to Payment",
+    "No payment channels available at the moment. Please contact support.": "No payment channels available at the moment. Please contact support."
 }

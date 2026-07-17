@@ -61,7 +61,7 @@
                                         <label for="site_default_payment_gateway">{{__('Default Payment Gateway')}}</label>
                                         <select name="site_default_payment_gateway" class="form-control" >
                                             @php
-                                                 $all_gateways = ['paypal','manual_payment','midtrans','xendit'];
+                                                 $all_gateways = ['paypal','manual_payment','midtrans','xendit','tripay'];
                                             @endphp
                                             @foreach($all_gateways as $gateway)
                                                 @if(!empty(get_static_option($gateway.'_gateway')))
@@ -445,6 +445,94 @@
                                                             <input type="text" name="xendit_env"
                                                                    id="xendit_env" class="form-control"
                                                                    value="{{get_static_option('xendit_env')}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="tripay_settings">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link" type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#tripay_settings_content"
+                                                                aria-expanded="false">
+                                                            <span class="page-title"> {{__('Tripay Settings')}}</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="tripay_settings_content" class="collapse"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <div class="payment-notice alert alert-warning">
+                                                                <p>{{__("Available Currency For Tripay is IDR")}}</p>
+                                                            </div>
+                                                            <label for="tripay_gateway"><strong>{{__('Enable Tripay')}}</strong></label>
+                                                            <label class="switch">
+                                                                <input type="checkbox" name="tripay_gateway"
+                                                                       @if(!empty(get_static_option('tripay_gateway'))) checked
+                                                                       @endif id="tripay_gateway">
+                                                                <span class="slider onff"></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="site_logo"><strong>{{__('Tripay Logo')}}</strong></label>
+                                                            <div class="media-upload-btn-wrapper">
+                                                                <div class="img-wrap">
+                                                                    @php
+                                                                        $tripay_img = get_attachment_image_by_id(get_static_option('tripay_preview_logo'),null,true);
+                                                                        $tripay_image_btn_label = 'Upload Image';
+                                                                    @endphp
+                                                                    @if (!empty($tripay_img))
+                                                                        <div class="attachment-preview">
+                                                                            <div class="thumbnail">
+                                                                                <div class="centered">
+                                                                                    <img class="avatar user-thumb"
+                                                                                         src="{{$tripay_img['img_url']}}"
+                                                                                         alt="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        @php  $tripay_image_btn_label = 'Change Image'; @endphp
+                                                                    @endif
+                                                                </div>
+                                                                <input type="hidden" id="tripay_preview_logo"
+                                                                       name="tripay_preview_logo"
+                                                                       value="{{get_static_option('tripay_preview_logo')}}">
+                                                                <button type="button"
+                                                                        class="btn btn-info media_upload_form_btn"
+                                                                        data-btntitle="Select Tripay Image"
+                                                                        data-modaltitle="Upload Tripay Image"
+                                                                        data-toggle="modal"
+                                                                        data-target="#media_upload_modal">
+                                                                    {{__($tripay_image_btn_label)}}
+                                                                </button>
+                                                            </div>
+                                                            <small class="form-text text-muted">{{__('allowed image format: jpg,jpeg,png. Recommended image size 160x50')}}</small>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tripay_api_key">{{__('Tripay API Key')}}</label>
+                                                            <input type="text" name="tripay_api_key"
+                                                                   id="tripay_api_key" class="form-control"
+                                                                   value="{{get_static_option('tripay_api_key')}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tripay_private_key">{{__('Tripay Private Key')}}</label>
+                                                            <input type="text" name="tripay_private_key"
+                                                                   id="tripay_private_key" class="form-control"
+                                                                   value="{{get_static_option('tripay_private_key')}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tripay_merchant_code">{{__('Tripay Merchant Code')}}</label>
+                                                            <input type="text" name="tripay_merchant_code"
+                                                                   id="tripay_merchant_code" class="form-control"
+                                                                   value="{{get_static_option('tripay_merchant_code')}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="tripay_env">{{__('Tripay Environment (production/sandbox)')}}</label>
+                                                            <input type="text" name="tripay_env"
+                                                                   id="tripay_env" class="form-control"
+                                                                   value="{{get_static_option('tripay_env')}}">
                                                         </div>
                                                     </div>
                                                 </div>

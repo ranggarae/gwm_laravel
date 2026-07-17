@@ -231,6 +231,21 @@ class DonationLogController extends Controller
                 return redirect($redirect_url);
             }
             return redirect()->back()->with(['msg' => __('Midtrans Error. Please contact support.'), 'type' => 'danger']);
+        }elseif ($request->selected_payment_gateway == 'tripay'){
+            $payable_amount = $donation_payment_details->amount;
+            if (get_static_option('site_global_currency') !== 'IDR') {
+                $payable_amount = get_amount_in_usd($payable_amount, get_static_option('site_global_currency')) * 15000;
+            }
+            $title = 'Donation: '.$donation_payment_details->donation->title;
+            return TripayController::getRedirectUrl(
+                'donation',
+                $donation_payment_details->track,
+                $payable_amount,
+                $donation_payment_details->name,
+                $donation_payment_details->email,
+                null,
+                $title
+            );
         }elseif ($request->selected_payment_gateway == 'xendit'){
             $payable_amount = $donation_payment_details->amount;
             if (get_static_option('site_global_currency') !== 'IDR') {

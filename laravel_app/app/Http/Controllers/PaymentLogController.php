@@ -235,6 +235,21 @@ use PaytmTrait;
                 return redirect($redirect_url);
             }
             return redirect()->back()->with(['msg' => __('Midtrans Error. Please contact support.'), 'type' => 'danger']);
+        }elseif ($request->payment_gateway == 'tripay'){
+            $payable_amount = $payment_details->package_price;
+            if (get_static_option('site_global_currency') !== 'IDR') {
+                $payable_amount = get_amount_in_usd($payable_amount, get_static_option('site_global_currency')) * 15000;
+            }
+            $title = 'Payment For Order: '.$payment_details->package_name;
+            return TripayController::getRedirectUrl(
+                'service',
+                $payment_details->track,
+                $payable_amount,
+                $request->name,
+                $request->email,
+                null, // phone not in this context usually, passing null is fine
+                $title
+            );
         }elseif ($request->payment_gateway == 'xendit'){
             $payable_amount = $payment_details->package_price;
             if (get_static_option('site_global_currency') !== 'IDR') {

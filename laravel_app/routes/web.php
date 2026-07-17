@@ -35,6 +35,10 @@ Route::group(['middleware' => ['setlang','globalVariable']],function (){
     //ipn route
     Route::post('/midtrans-ipn', 'MidtransController@ipn')->name('midtrans.ipn');
     Route::post('/xendit-ipn', 'XenditController@ipn')->name('xendit.ipn');
+
+    /* Tripay Routes */
+    Route::get('/tripay/checkout', 'TripayController@checkout')->name('tripay.checkout');
+    Route::post('/tripay/process', 'TripayController@process')->name('tripay.process');
     Route::post('/paypal-ipn','PaymentLogController@paypal_ipn')->name('frontend.paypal.ipn');
     Route::post('/paytm-ipn','PaymentLogController@paytm_ipn')->name('frontend.paytm.ipn');
     Route::get('/paystack/callback','PaymentLogController@paystack_callback')->name('frontend.paystack.callback');

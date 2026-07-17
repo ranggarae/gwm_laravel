@@ -656,6 +656,12 @@ class GeneralSettingsController extends Controller
             'bri_client_id' => 'nullable|string|max:191',
             'bri_client_secret' => 'nullable|string|max:191',
             'bri_env' => 'nullable|string|max:191',
+            'tripay_gateway' => 'nullable|string|max:191',
+            'tripay_preview_logo' => 'nullable|string|max:191',
+            'tripay_api_key' => 'nullable|string|max:191',
+            'tripay_private_key' => 'nullable|string|max:191',
+            'tripay_merchant_code' => 'nullable|string|max:191',
+            'tripay_env' => 'nullable|string|max:191',
         ]);
         $save_data = [
             'cash_on_delivery_preview_logo',
@@ -699,6 +705,11 @@ class GeneralSettingsController extends Controller
             'bri_client_id',
             'bri_client_secret',
             'bri_env',
+            'tripay_preview_logo',
+            'tripay_api_key',
+            'tripay_private_key',
+            'tripay_merchant_code',
+            'tripay_env',
         ];
         foreach ($save_data as $item) {
             update_static_option($item, $request->$item);
@@ -721,6 +732,7 @@ class GeneralSettingsController extends Controller
         update_static_option('midtrans_gateway', $request->midtrans_gateway);
         update_static_option('xendit_gateway', $request->xendit_gateway);
         update_static_option('bri_gateway', $request->bri_gateway);
+        update_static_option('tripay_gateway', $request->tripay_gateway);
 
         $env_val['PAYSTACK_PUBLIC_KEY'] =  $request->paystack_public_key ? $request->paystack_public_key : 'pk_test_081a8fcd9423dede2de7b4c3143375b5e5415290';
         $env_val['PAYSTACK_SECRET_KEY'] =  $request->paystack_secret_key ? $request->paystack_secret_key : 'sk_test_c874d38f8d08760efc517fc83d8cd574b906374f';
