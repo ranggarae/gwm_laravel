@@ -87,6 +87,7 @@ class TripayController extends Controller
                 ]
             ],
             'return_url' => url('/'),
+            'callback_url' => url('/api/tripay/webhook'),
             'expired_time' => (time() + (24 * 60 * 60)), // 24 hours
             'signature' => $signature
         ];
